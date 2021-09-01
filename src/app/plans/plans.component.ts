@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-plans',
@@ -10,6 +11,11 @@ export class PlansComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+  }
+
+  mainQA(event: MatTabChangeEvent){
+    console.log("hellow %o", event);
   }
 
 }

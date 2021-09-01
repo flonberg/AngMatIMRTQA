@@ -1,4 +1,17 @@
 <p>Ang Mat IMRTQA!</p>
+<mat-tab-group  (selectedTabChange) ="mainQA($event)" animationDuration="0ms">
+  <mat-tab label="Main QA Page" >
+    <ng-template mat-tab-label> <span class="my-custom-class">Plans Needing QA </span></ng-template>
+    test
+  </mat-tab>
+  <mat-tab label="Ready For QA">Plans Ready For QA</mat-tab>
+  <mat-tab label="QA Completed">Content 3</mat-tab>
+  <mat-tab label="Dosimetry Complete" >Content 1</mat-tab>
+  <mat-tab label="Update">Content 2</mat-tab>
+  <mat-tab label="White Board Home">Content 3</mat-tab>
+</mat-tab-group>
+
+
 <mat-accordion>
     <mat-expansion-panel hideToggle>
       <mat-expansion-panel-header>
