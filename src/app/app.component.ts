@@ -30,10 +30,9 @@ export class AppComponent {
   
   constructor(private http: HttpClient, public datePipe: DatePipe) {
     console.log(" const ");
-    this.getMDs().subscribe(res =>{
-      this.setData(res);
-    })
-
+   // this.getMDs().subscribe(res =>{
+    //  this.setData(res);
+   // })
    }
    setDate(start, end){
      console.log("eve is %o", start)
