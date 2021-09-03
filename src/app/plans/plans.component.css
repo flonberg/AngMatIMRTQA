@@ -5,3 +5,7 @@
     font-size: 18pt;
     text-align: center;
   }
+  .pClass {
+    color:red;
+    background: red !important;
+  }

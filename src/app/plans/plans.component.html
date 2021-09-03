@@ -1,11 +1,12 @@
 <p>Ang Mat IMRTQA!</p>
-<mat-tab-group  (selectedTabChange) ="mainQA($event)" animationDuration="0ms">
+<mat-tab-group  (selectedTabChange) ="setPlansShown($event)" animationDuration="0ms">
   <mat-tab label="Main" >
     <ng-template mat-tab-label> <span class="my-custom-class">Main QA page</span></ng-template>
-    <span class="myHeading"> Plans Needing QA </span>
+    <span class="myHeading"> Plans Needing QA {{ tabIndex }}</span>
   </mat-tab>
   <mat-tab label="Ready" >
-    <ng-template mat-tab-label> <span class="my-custom-class">Ready For QA </span></ng-template>
+    <ng-template mat-tab-label>
+       <span class="my-custom-class">Ready For QA {{ tabIndex }} </span></ng-template>
     test
   </mat-tab>
   <mat-tab label="DosimComplete" >
@@ -17,11 +18,12 @@
 </mat-tab-group>
 
 
-<mat-accordion>
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
+<mat-accordion *ngFor = "let aPlan of allPlans" >  
+  <span> Plans Starting on </span>  
+  <mat-expansion-panel *ngFor="let plans of plansDisplayed; let i = index" hideToggle class="pClass" >
+      <mat-expansion-panel-header> Plans Starting on 
         <mat-panel-title>
-          This is the expansion title
+          Unit Number {{ plansDisplayed[i]['UnitNumber']}}
         </mat-panel-title>
         <mat-panel-description>
           This is a summary of the content
@@ -29,16 +31,5 @@
       </mat-expansion-panel-header>
       <p>This is the primary content of the panel.</p>
     </mat-expansion-panel>
-    <mat-expansion-panel (opened)="panelOpenState = true"
-                         (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Self aware panel
-        </mat-panel-title>
-        <mat-panel-description>
-          Currently I am {{panelOpenState ? 'open' : 'closed'}}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>I'm visible because I am open</p>
-    </mat-expansion-panel>
+
   </mat-accordion>
