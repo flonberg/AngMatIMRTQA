@@ -8,16 +8,15 @@ import { MatTabChangeEvent } from '@angular/material/tabs';
   styleUrls: ['./plans.component.css']
 })
 export class PlansComponent {
-  [x: string]: any;
-  panelOpenState: boolean;
-  dataArray: any;
+
+  //panelOpenState: boolean;
+  dataArray: any[];
   tabIndex: number;
   plansDisplayed: any[];
   allPlans: any[];
   count: number;
   
 
-  
   constructor(private http: HttpClient) {
     this. tabIndex = 0;                     // set to show MainPage data
     this .allPlans = Array();
@@ -38,8 +37,12 @@ export class PlansComponent {
       this.dataArray = res;
       var todayDate = new Date().toISOString().slice(0, 10);
       this .plansDisplayed = this.dataArray[todayDate]
-      this .allPlans[0] = this .plansDisplayed;
-      this .allPlans[1] = this .plansDisplayed;
-      console.log(  this .dataArray );
+
+      console.log( this .dataArray);
+      var index = 0;
+      Object.keys(this.dataArray).forEach(key => {
+        console.log(this.dataArray[key])
+        this. allPlans[index++] = this.dataArray[key]
+      })
     }
 }

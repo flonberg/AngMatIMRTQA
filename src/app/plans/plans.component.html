@@ -18,12 +18,12 @@
 </mat-tab-group>
 
 
-<mat-accordion *ngFor = "let aPlan of allPlans" >  
-  <span> Plans Starting on </span>  
-  <mat-expansion-panel *ngFor="let plans of plansDisplayed; let i = index" hideToggle class="pClass" >
+<mat-accordion *ngFor = "let aPlan of allPlans; let j = index" >  
+  <span  *ngIf = " aPlan[0]   "> Plans Starting on {{ aPlan[0]['StartDate'] }}  </span>  
+  <mat-expansion-panel *ngFor="let plan of aPlan; let i = index" hideToggle class="pClass" >
       <mat-expansion-panel-header> Plans Starting on 
         <mat-panel-title>
-          Unit Number {{ plansDisplayed[i]['UnitNumber']}}
+          Unit Number {{ plan['UnitNumber']}}
         </mat-panel-title>
         <mat-panel-description>
           This is a summary of the content
