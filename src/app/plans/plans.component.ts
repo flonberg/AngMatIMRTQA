@@ -37,12 +37,15 @@ export class PlansComponent {
       this.dataArray = res;
       var todayDate = new Date().toISOString().slice(0, 10);
       this .plansDisplayed = this.dataArray[todayDate]
-
-      console.log( this .dataArray);
+  //    this .allPlans[0] = this .dataArray;
+  //    this .allPlans[1] = this .plansDisplayed;
+    //  console.log( this .dataArray);
       var index = 0;
       Object.keys(this.dataArray).forEach(key => {
-        console.log(this.dataArray[key])
+    //   console.log("key is %o array is %o", key, this.dataArray[key])
         this. allPlans[index++] = this.dataArray[key]
       })
-    }
+ 
+    console.log(this .allPlans)
+  }
 }

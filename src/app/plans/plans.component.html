@@ -18,12 +18,14 @@
 </mat-tab-group>
 
 
+<div *ngIf = "allPlans">
+
 <mat-accordion *ngFor = "let aPlan of allPlans; let j = index" >  
-  <span  *ngIf = " aPlan[0]   "> Plans Starting on {{ aPlan[0]['StartDate'] }}  </span>  
-  <mat-expansion-panel *ngFor="let plan of aPlan; let i = index" hideToggle class="pClass" >
+  <span> plans Starting on </span>
+  <mat-expansion-panel *ngFor="let plan of aPlan; let i = index" hideToggle [ngClass]="plan['bgClass']" >
       <mat-expansion-panel-header> Plans Starting on 
         <mat-panel-title>
-          Unit Number {{ plan['UnitNumber']}}
+          <span class="pBold"> {{ plan['UnitNumber']}} {{ plan['bgClass']}}</span>
         </mat-panel-title>
         <mat-panel-description>
           This is a summary of the content
@@ -31,5 +33,12 @@
       </mat-expansion-panel-header>
       <p>This is the primary content of the panel.</p>
     </mat-expansion-panel>
-
   </mat-accordion>
+</div>
+
+  <div *ngIf = "allPlans">
+    test
+    <div *ngFor = "let tCase of allPlans">
+      one
+    </div> 
+  </div>

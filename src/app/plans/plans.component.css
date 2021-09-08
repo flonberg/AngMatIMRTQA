@@ -5,7 +5,19 @@
     font-size: 18pt;
     text-align: center;
   }
-  .pClass {
-    color:red;
-    background: red !important;
+  .pClassX {
+    color:blue;
+    background: green !important;
+  }
+  .pBold {
+    font-weight:bold;
+  }
+  .redClass {
+    background-color: pink;
+  }
+  .orangeClass {
+    background-color: orange !important;
+  }
+  .greyClass {
+    background-attachment: grey;
   }
