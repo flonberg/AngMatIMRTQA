@@ -18,14 +18,23 @@
 </mat-tab-group>
 
 
-<div *ngIf = "allPlans">
+<div *ngIf = "filteredPlans">
 
-<mat-accordion *ngFor = "let aPlan of allPlans; let j = index" >  
-  <span> plans Starting on </span>
+<mat-accordion *ngFor = "let aPlan of filteredPlans; let j = index" >  
+  <span *ngIf = "aPlan[0]"> plans Starting on  {{ aPlan[0].StartDate }} </span>
   <mat-expansion-panel *ngFor="let plan of aPlan; let i = index" hideToggle [ngClass]="plan['bgClass']" >
       <mat-expansion-panel-header> Plans Starting on 
         <mat-panel-title>
-          <span class="pBold"> {{ plan['UnitNumber']}} {{ plan['bgClass']}}</span>
+          <div id="container">
+            <div id="inner">
+              <div [ngClass]="plan['linacClass']">{{ plan['linac'] }}    </div>
+              <div class="unitNumber">{{ plan['UnitNumber'] }} </div>
+              <div class="unitNumber"> {{ plan['PatientInfo']['LastName']}} </div>
+
+              <div [ngClass]="plan['statClass']">{{ plan['status'] }}    </div>
+            </div>
+          </div>
+     
         </mat-panel-title>
         <mat-panel-description>
           This is a summary of the content
@@ -35,10 +44,3 @@
     </mat-expansion-panel>
   </mat-accordion>
 </div>
-
-  <div *ngIf = "allPlans">
-    test
-    <div *ngFor = "let tCase of allPlans">
-      one
-    </div> 
-  </div>

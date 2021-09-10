@@ -13,11 +13,111 @@
     font-weight:bold;
   }
   .redClass {
-    background-color: pink;
+    background-color: rgb(236, 95, 76);
   }
   .orangeClass {
     background-color: orange !important;
   }
   .greyClass {
-    background-attachment: grey;
+    background-color: rgb(140, 183, 179);
   }
+  #container {
+    height: 90%;
+    overflow: hidden;
+    width: 90%;
+  }
+  
+  #inner {
+    overflow: hidden;
+    width: 90%;
+    height: 90%
+  }
+  
+  .child {
+    float: left;
+    width: 70px;
+    height: 80px;
+  }
+  .unitNumber{
+    float: left;
+    width: 140px;
+    height: 90%;
+    font-weight: bold;
+    text-align: center;
+
+  }
+  .patName{
+    float: left;
+    width: 140px;
+    height: 50px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .greenClass {
+    float: left;
+    background-color: green;
+    width: 80px;
+    height: 90%;
+  }
+  .TrueBeam {
+    float: left;
+    background-color: green;
+    width: 80px;
+
+  } 
+  .Agility {
+    float: left;
+    background-color: rgb(207, 71, 207);
+    width: 80px;
+
+  }  
+  .purpleClass {
+    float: left;
+    background-color:;
+    width: 80px;
+    height:90%;
+  }
+  .IMRTClass {
+    float: left;
+    background-color:green;
+    width: 140px;
+
+  }
+  .PhysicsClass {
+    float: left;
+    background-color:rgb(191, 111, 244);
+    width: 140px;
+  }
+  .TPClass {
+    float: left;
+    background-color:pink;
+    width: 140px;
+  }
+  .PWUClass {
+    float: left;
+    background-color: rgb(114, 148, 229);
+    width: 140px;
+  }
+  .RFMDClass {
+    float: left;
+    background-color:rgb(238, 255, 0);
+    width: 140px;
+  }
+  .MdAPClass {
+    float: left;
+    background-color:rgb(123, 255, 0);
+    width: 140px;
+  }
+  .CnPClass {
+    float: left;
+    background-color:rgba(255, 136, 0, 0.786);
+    width: 140px;
+  }
+  .PreTClass {
+    float: left;
+    background-color:rgba(175, 100, 15, 0.786);
+    width: 140px;
+  }
+#inner {
+  border:solid;
+}

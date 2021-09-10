@@ -11,6 +11,7 @@ export class PlansComponent {
 
   //panelOpenState: boolean;
   dataArray: any[];
+  filteredPlans: any[];
   tabIndex: number;
   plansDisplayed: any[];
   allPlans: any[];
@@ -37,15 +38,31 @@ export class PlansComponent {
       this.dataArray = res;
       var todayDate = new Date().toISOString().slice(0, 10);
       this .plansDisplayed = this.dataArray[todayDate]
-  //    this .allPlans[0] = this .dataArray;
-  //    this .allPlans[1] = this .plansDisplayed;
-    //  console.log( this .dataArray);
       var index = 0;
       Object.keys(this.dataArray).forEach(key => {
-    //   console.log("key is %o array is %o", key, this.dataArray[key])
         this. allPlans[index++] = this.dataArray[key]
       })
- 
-    console.log(this .allPlans)
+      this. filterData(this .allPlans);
+  }
+  filterData(dArray){
+    var index = 0;
+    this .filteredPlans= Array();
+    Object.keys(dArray).forEach(key => {                    // step thru the plans for each Date
+      this .filteredPlans[key] = Array();              // create it
+      Object.keys(dArray).forEach(key2 => {                 // step thru each plan
+        if (dArray[key][key2]   ){                          // if there IS data
+          if (+dArray[key][key2]['flowbit'] !== dArray[key][key2]['flowbitAndWorkbit'] ) { // flowbit == flowbitAndWorkbigt -> QAComplete
+            this .filteredPlans[key].push(dArray[key][key2]); // push the plan into the array
+          }
+        }
+      })
+    })
+    console.log("filteredPlans is %o", this .filteredPlans)
+  }
+  linacClass(str){
+    if (str.indexOf("TrueBeam") !== -1)
+      return 'geenClass';
+    if (str.indexOf("Agility") !== -1)
+      return 'purpleClass';
   }
 }
