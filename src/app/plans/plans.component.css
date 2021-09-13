@@ -6,10 +6,23 @@
 }
 mat-panel-title {
  font-weight: bold;
- width: 120px;
+ width: 130px;
 }
+mat-panel-description {
+  width: 130px;
+ }
 mat-expansion-panel{
   background-color: white;
+}
+table td {
+  border:solid;
+  border-width: thin;
+  padding:0px 30px 0px 30px; /* top right bottom left */
+
+}
+table {
+  border-collapse: separate;
+
 }
 
 .example-headers-align .mat-expansion-panel-header-title,
@@ -75,13 +88,13 @@ mat-expansion-panel{
     width: 240px;
     height: 90%;
     border:solid;
-    text-align: center;
+    text-align: left;
   }
   .child {
     float: left;
     width: 140px;
     height: 90%;
-    text-align: center;
+    text-align: left;
   }
   .unitNumber{
     float: left;
@@ -105,9 +118,11 @@ mat-expansion-panel{
   }
   .TrueBeam {
     background-color: green;
+    width:100px;  
   } 
   .Agility {
     background-color: rgb(207, 71, 207);
+    width:100px;
   }  
   .purpleClass {
     float: left;
