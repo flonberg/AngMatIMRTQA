@@ -31,6 +31,7 @@ export class PlansComponent {
   setPlansShown(event: MatTabChangeEvent){
     console.log("hellow %o", event.index);
     this. tabIndex = event.index;               // set to determine shown plans according to tab selected
+    this. filter2data( this .allPlans)
 
   }
   getData(){
@@ -52,6 +53,41 @@ export class PlansComponent {
 
     console.log("f2Plans is %o", this .f2Plans)
   }
+
+  filter2data(dArray){
+    this. f2Plans = Array();                                          // create the array for display
+    for (let entry of dArray) {                                       // step thru the data
+      if (!this. f2Plans[entry[0]['StartDate']])                      // if there is no array for this date
+      this. f2Plans [entry[0]['StartDate']] = Array();                // create the array to this date
+        for (let e2 of entry){                                        // go thru the plans for this date  
+          {
+          if (this. tabIndex == 0){                                   // indicates the 'mainQA' page view. 
+            if (+e2['flowbit'] !== e2['flowbitAndWorkbit'] ) {        // find the ones which have NOT completed QA
+               this. f2Plans [entry[0]['StartDate']].push(e2)         // push the plan into the array for this date. 
+            } 
+          }
+          else {
+            this. f2Plans [entry[0]['StartDate']].push(e2)         // push the plan into the array for this date. ;
+          }
+        }
+      }
+    }
+  
+    // the 'push' creates a 'bad' array ( doesn't appear in html ) so need to copy it to a new one ?????  //
+    var theKeys = Object.keys(this .f2Plans);                         // get the keys of the 'bad' array
+    var gI = 0;                   
+    this. f3Plans = Array();                                          // create the new array
+    for ( let k = 0; k < theKeys.length; k++){                        // step thru the date-grouped plans
+      if (this .f2Plans[theKeys[k]].length > 0)                       // if this date has planw
+        this .f3Plans[gI++] = this .f2Plans[theKeys[k]]                 // copy each plan to the new array
+    }
+  }
+  linacClass(str){
+    if (str.indexOf("TrueBeam") !== -1)
+      return 'geenClass';
+    if (str.indexOf("Agility") !== -1)
+      return 'purpleClass';
+  }
   filterData(dArray){
     var index = 0;
     console.log("50 %0 ", dArray[4][25])
@@ -66,7 +102,7 @@ export class PlansComponent {
           }
           if (+dArray[key][key2]['flowbit'] !== dArray[key][key2]['flowbitAndWorkbit'] ) 
           { // flowbit == flowbitAndWorkbigt -> QAComplete
-   
+            
             this .filteredPlans[key].push(dArray[key][key2]); // push the plan into the array
             if (dArray[key][key2]['UnitNumber'] == '7055544'){
               console.log("2222 key is " + key + " StartDate is "+   dArray[key][key2]['planIdx'] + "  flowbit is "  + dArray[key][key2]['flowbit'] + "flowAndWorkbit" + dArray[key][key2]['flowbitAndWorkbit'] );
@@ -78,40 +114,5 @@ export class PlansComponent {
       })
     })
 
-  }
-  filter2data(dArray){
-    this. f2Plans = Array();
-    for (let entry of dArray) {
-      if (!this. f2Plans[entry[0]['StartDate']])
-      this. f2Plans [entry[0]['StartDate']] = Array();
-        for (let e2 of entry){
-         // if ( entry[0]['StartDate'] == '2021-09-13')
-          {
-            if (+e2['flowbit'] !== e2['flowbitAndWorkbit'] ) {
-           //   console.log("e2 flowbit is " + e2['flowbit'] + "fbat is " +e2['flowbitAndWorkbit'] )
-            this. f2Plans [entry[0]['StartDate']].push(e2)
-            } 
-        }
-      }
-    }
-    var theKeys = Object.keys(this .f2Plans);
-    var gI = 0;
-    this. f3Plans = Array();
-    for ( let k = 0; k < theKeys.length; k++){
-      if (this .f2Plans[theKeys[k]].length > 0)
-      console.log("step %o", theKeys[k])
-      this .f3Plans[gI++] = this .f2Plans[theKeys[k]]
-    }
-    console.log("f2Plans 88888 is %o", this .f3Plans)
-    for(let i=0; i<this.f2Plans.length; i++){
-      console.log("rrrr");
-  }
-
-  }
-  linacClass(str){
-    if (str.indexOf("TrueBeam") !== -1)
-      return 'geenClass';
-    if (str.indexOf("Agility") !== -1)
-      return 'purpleClass';
   }
 }

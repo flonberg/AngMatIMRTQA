@@ -1,6 +1,9 @@
 .my-custom-class {
     font-size: 18pt;
   }
+  .matPlan {
+    height:100%;
+  }
   .myHeading{
     font-size: 18pt;
     text-align: center;
@@ -29,16 +32,21 @@
   
   #inner {
     overflow: hidden;
-    width: 1200px;
+    width: 1500px;
     height: 90%;
     border: solid;
   }
-  
+  .chTable {
+    float: left;
+    width: 240px;
+    height: 90%;
+    border:solid;
+    text-align: center;
+  }
   .child {
     float: left;
     width: 140px;
     height: 90%;
-  
     text-align: center;
   }
   .unitNumber{

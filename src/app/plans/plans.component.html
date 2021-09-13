@@ -18,13 +18,20 @@
 </mat-tab-group>
 
 
-<div *ngIf = "filteredPlans">
 
+
+
+
+
+
+
+
+<div *ngIf = "filteredPlans">
 <mat-accordion *ngFor = "let aPlan of f3Plans; let j = index" >  
   <span *ngIf = "aPlan[0]"> plans Starting on  {{ aPlan[0].StartDate }} </span>
   <mat-expansion-panel *ngFor="let plan of aPlan; let i = index" hideToggle [ngClass]="plan['bgClass']" >
-      <mat-expansion-panel-header> Plans Starting on 
-        <mat-panel-title>
+      <mat-expansion-panel-header collapsedHeight="80px"  expandedHeight="156px"> 
+        <mat-panel-title class='matPan'>
           <div id="container">
             <div id="inner">
               <div [ngClass]="plan['linacClass']">{{ plan['linac'] }}    </div>
@@ -34,14 +41,17 @@
               <div class ='child'> {{ plan['PhysName'] }}</div>
               <div class ='child'> {{ plan['MDname'] }}</div>
               <div class ='child'> {{ plan['Modality'] }}</div>
-
+              <div class ='chTable'> {{ plan['Modality'] }}</div>
             </div>
           </div>
-     
         </mat-panel-title>
+        <mat-panel-description>
+          Type your name and age
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
  
       </mat-expansion-panel-header>
-
+test
     </mat-expansion-panel>
   </mat-accordion>
 </div>
