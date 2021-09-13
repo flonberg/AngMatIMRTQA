@@ -17,39 +17,39 @@
   <mat-tab label="White Board Home">Content 3</mat-tab>
 </mat-tab-group>
 
-
-
-
-
-
-
-
-
-
 <div *ngIf = "filteredPlans">
 <mat-accordion *ngFor = "let aPlan of f3Plans; let j = index" >  
   <span *ngIf = "aPlan[0]"> plans Starting on  {{ aPlan[0].StartDate }} </span>
   <mat-expansion-panel *ngFor="let plan of aPlan; let i = index" hideToggle [ngClass]="plan['bgClass']" >
+
       <mat-expansion-panel-header collapsedHeight="80px"  expandedHeight="156px"> 
-        <mat-panel-title class='matPan'>
-          <div id="container">
-            <div id="inner">
-              <div [ngClass]="plan['linacClass']">{{ plan['linac'] }}    </div>
-              <div class="unitNumber">{{ plan['UnitNumber'] }} </div>
-              <div class="unitNumber"> {{ plan['PatientInfo']['LastName']}} </div>
-              <div [ngClass]="plan['statClass']">{{ plan['status'] }}    </div>
-              <div class ='child'> {{ plan['PhysName'] }}</div>
-              <div class ='child'> {{ plan['MDname'] }}</div>
-              <div class ='child'> {{ plan['Modality'] }}</div>
-              <div class ='chTable'> {{ plan['Modality'] }}</div>
-            </div>
-          </div>
+        <mat-panel-title [ngClass]="plan['linacClass']">
+          {{ plan['linac'] }} 
         </mat-panel-title>
-        <mat-panel-description>
-          Type your name and age
-          <mat-icon>account_circle</mat-icon>
+        <mat-panel-title>
+          {{ plan['UnitNumber'] }}
+        </mat-panel-title>
+        <mat-panel-title>
+        {{ plan['PatientInfo']['LastName']}} 
+        </mat-panel-title>
+        <mat-panel-description >
+         {{ plan['PhysName'] }}
         </mat-panel-description>
- 
+        <mat-panel-description>
+       {{ plan['MDname'] }}
+        </mat-panel-description>
+        <mat-panel-description>
+        {{ plan['status']}} 
+        </mat-panel-description>
+        <mat-panel-description class='wide'>
+          <table>
+            <tr>
+              <th> Fields Delivered</th><th>two</th> <th> one</th><th>two</th>
+            </tr>
+     
+            </table>
+          </mat-panel-description>
+
       </mat-expansion-panel-header>
 test
     </mat-expansion-panel>

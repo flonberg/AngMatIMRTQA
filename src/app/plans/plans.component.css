@@ -1,3 +1,37 @@
+.mat-accordion .mat-expansion-panel{
+  margin-bottom: 10px;
+}
+.example-action-buttons {
+  padding-bottom: 20px;
+}
+mat-panel-title {
+ font-weight: bold;
+ width: 120px;
+}
+mat-expansion-panel{
+  background-color: white;
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+  color:red;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+  color:red;
+
+}
+
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+.wide {
+  width:40%;
+}
+
 .my-custom-class {
     font-size: 18pt;
   }
@@ -70,16 +104,10 @@
     height: 90%;
   }
   .TrueBeam {
-    float: left;
     background-color: green;
-    width: 80px;
-
   } 
   .Agility {
-    float: left;
     background-color: rgb(207, 71, 207);
-    width: 80px;
-
   }  
   .purpleClass {
     float: left;

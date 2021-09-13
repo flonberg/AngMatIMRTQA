@@ -19,6 +19,7 @@ import { PlansComponent } from './plans/plans.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
 import { SecondComponent } from './second/second.component';
+import {MatIconModule} from '@angular/material/icon'
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,13 +34,10 @@ import { SecondComponent } from './second/second.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatFormFieldModule,
+    MatInputModule,
     MatExpansionModule,
     MatTabsModule,
-  
-    
-    
-
-
+    MatIconModule,
     BrowserAnimationsModule
   ],
   providers: [DatePipe],
