@@ -20,7 +20,7 @@
 
 <div *ngIf = "filteredPlans">
 
-<mat-accordion *ngFor = "let aPlan of filteredPlans; let j = index" >  
+<mat-accordion *ngFor = "let aPlan of f3Plans; let j = index" >  
   <span *ngIf = "aPlan[0]"> plans Starting on  {{ aPlan[0].StartDate }} </span>
   <mat-expansion-panel *ngFor="let plan of aPlan; let i = index" hideToggle [ngClass]="plan['bgClass']" >
       <mat-expansion-panel-header> Plans Starting on 

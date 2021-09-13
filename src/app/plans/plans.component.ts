@@ -12,7 +12,8 @@ export class PlansComponent {
   //panelOpenState: boolean;
   dataArray: any[];
   filteredPlans: any[];
-  f2Plans: any[]
+  f2Plans: any[];
+  f3Plans: any[];
   tabIndex: number;
   plansDisplayed: any[];
   allPlans: any[];
@@ -93,7 +94,15 @@ export class PlansComponent {
         }
       }
     }
-    console.log("f2Plans 88888 is %o", this .f2Plans['2021-09-13'])
+    var theKeys = Object.keys(this .f2Plans);
+    var gI = 0;
+    this. f3Plans = Array();
+    for ( let k = 0; k < theKeys.length; k++){
+      if (this .f2Plans[theKeys[k]].length > 0)
+      console.log("step %o", theKeys[k])
+      this .f3Plans[gI++] = this .f2Plans[theKeys[k]]
+    }
+    console.log("f2Plans 88888 is %o", this .f3Plans)
     for(let i=0; i<this.f2Plans.length; i++){
       console.log("rrrr");
   }
