@@ -29,14 +29,17 @@
   
   #inner {
     overflow: hidden;
-    width: 90%;
-    height: 90%
+    width: 1200px;
+    height: 90%;
+    border: solid;
   }
   
   .child {
     float: left;
-    width: 70px;
-    height: 80px;
+    width: 140px;
+    height: 90%;
+  
+    text-align: center;
   }
   .unitNumber{
     float: left;
@@ -44,7 +47,6 @@
     height: 90%;
     font-weight: bold;
     text-align: center;
-
   }
   .patName{
     float: left;
@@ -118,6 +120,4 @@
     background-color:rgba(175, 100, 15, 0.786);
     width: 140px;
   }
-#inner {
-  border:solid;
-}
+
