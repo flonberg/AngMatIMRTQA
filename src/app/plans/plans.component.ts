@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatTabChangeEvent } from '@angular/material/tabs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-plans',
@@ -19,12 +20,17 @@ export class PlansComponent {
   allPlans: any[];
   count: number;
   testData: any[];
+  userid: string;
+  isUserBdCert: boolean;
   
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.queryParams.subscribe(params => {
+      this .userid = params['userid'];
+  });
     this. tabIndex = 0;                     // set to show MainPage data
     this .allPlans = Array();
-    this.getData().subscribe(res =>{
+    this.getData('fjl3').subscribe(res =>{
       this.setData(res);
     })
    }
@@ -34,31 +40,32 @@ export class PlansComponent {
     this. filter2data( this .allPlans)
 
   }
-  getData(){
-    var url = 'https://ion.mgh.harvard.edu/cgi-bin/imrtqa/getForQA.php';
+  getData(userid){
+    var url = 'https://ion.mgh.harvard.edu/cgi-bin/imrtqa/getForQA.php?userid='+this. userid;
     return this .http.get(url)
     }
   setData(res ) {
       this.dataArray = res;
-      console.log(this.dataArray)
+      this .isUserBdCert = this. dataArray['bdCert'];              // set user BoardCert
+      delete(this. dataArray['bdCert']);                            // delete that element
       var todayDate = new Date().toISOString().slice(0, 10);
       this .plansDisplayed = this.dataArray[todayDate]
       var index = 0;
       Object.keys(this.dataArray).forEach(key => {
         this. allPlans[index++] = this.dataArray[key]
       })
-
       this. filter2data(this .allPlans)
-      this. filterData(this .allPlans);
+    //  this. filterData(this .allPlans);
 
     console.log("f2Plans is %o", this .f2Plans)
   }
 
   filter2data(dArray){
     this. f2Plans = Array();                                          // create the array for display
+    console.log("beDaets %o", dArray['bdCert']);
     for (let entry of dArray) {                                       // step thru the data
       if (!this. f2Plans[entry[0]['StartDate']])                      // if there is no array for this date
-      this. f2Plans [entry[0]['StartDate']] = Array();                // create the array to this date
+        this. f2Plans [entry[0]['StartDate']] = Array();                // create the array to this date
         for (let e2 of entry){                                        // go thru the plans for this date  
           {
           if (this. tabIndex == 0){                                   // indicates the 'mainQA' page view. 
@@ -81,7 +88,9 @@ export class PlansComponent {
       if (this .f2Plans[theKeys[k]].length > 0)                       // if this date has planw
         this .f3Plans[gI++] = this .f2Plans[theKeys[k]]                 // copy each plan to the new array
     }
+    console.log("F3plans %o", this. f3Plans)
   }
+
   linacClass(str){
     if (str.indexOf("TrueBeam") !== -1)
       return 'geenClass';
@@ -110,7 +119,6 @@ export class PlansComponent {
             }
           }
         }
-
       })
     })
 
