@@ -19,7 +19,8 @@ import { PlansComponent } from './plans/plans.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
 import { SecondComponent } from './second/second.component';
-import {MatIconModule} from '@angular/material/icon'
+import {MatIconModule} from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,8 +39,12 @@ import {MatIconModule} from '@angular/material/icon'
     MatExpansionModule,
     MatTabsModule,
     MatIconModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule.forRoot([
+      { path: '**', component: PlansComponent}
+    ])
   ],
+  
   providers: [DatePipe],
   bootstrap: [AppComponent]
 })

@@ -1,14 +1,15 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatTabChangeEvent } from '@angular/material/tabs';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Component({
   selector: 'app-plans',
   templateUrl: './plans.component.html',
   styleUrls: ['./plans.component.css']
 })
-export class PlansComponent {
+export class PlansComponent implements OnInit{
 
   //panelOpenState: boolean;
   dataArray: any[];
@@ -24,16 +25,23 @@ export class PlansComponent {
   isUserBdCert: boolean;
   
 
-  constructor(private http: HttpClient,private activatedRoute: ActivatedRoute) {
+  constructor(private http: HttpClient, private activatedRoute: ActivatedRoute) {
+
+   }
+
+   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(params => {
-      this .userid = params['userid'];
-  });
+      const userId = params['userid'];
+      console.log("35 usries %o", userId);
+    });
+
     this. tabIndex = 0;                     // set to show MainPage data
     this .allPlans = Array();
     this.getData('fjl3').subscribe(res =>{
       this.setData(res);
     })
-   }
+  }
+
   setPlansShown(event: MatTabChangeEvent){
     console.log("hellow %o", event.index);
     this. tabIndex = event.index;               // set to determine shown plans according to tab selected
@@ -41,12 +49,17 @@ export class PlansComponent {
 
   }
   getData(userid){
+    var dP = Array("one", "two");
     var url = 'https://ion.mgh.harvard.edu/cgi-bin/imrtqa/getForQA.php?userid='+this. userid;
-    return this .http.get(url)
+    return this .http.post(url, JSON.stringify(dP))
+//    return this .http.get(url)
     }
+
   setData(res ) {
       this.dataArray = res;
       this .isUserBdCert = this. dataArray['bdCert'];              // set user BoardCert
+      console.log("this.userid %o", this .userid)
+      console.log("isUserBdCert %o", this .isUserBdCert)
       delete(this. dataArray['bdCert']);                            // delete that element
       var todayDate = new Date().toISOString().slice(0, 10);
       this .plansDisplayed = this.dataArray[todayDate]
