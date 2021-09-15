@@ -4,6 +4,11 @@
 .example-action-buttons {
   padding-bottom: 20px;
 }
+.accTable {
+  width: 12200px;
+  border:solid;
+  background-color:white;
+}
 mat-panel-title {
  font-weight: bold;
  width: 130px;
@@ -24,7 +29,12 @@ table {
   border-collapse: separate;
 
 }
-
+.small {
+  width:100px;
+}
+.large {
+  width:400px;
+}
 .example-headers-align .mat-expansion-panel-header-title,
 .example-headers-align .mat-expansion-panel-header-description {
   flex-basis: 0;

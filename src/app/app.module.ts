@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
-
+import { MatCheckboxModule } from '@angular/material/checkbox'; 
 import { DpDatePickerModule } from "ng2-date-picker";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
@@ -40,6 +40,7 @@ import { RouterModule } from '@angular/router';
     MatTabsModule,
     MatIconModule,
     BrowserAnimationsModule,
+    MatCheckboxModule,
     RouterModule.forRoot([
       { path: '**', component: PlansComponent}
     ])
