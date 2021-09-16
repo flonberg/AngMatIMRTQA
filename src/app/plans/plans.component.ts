@@ -56,9 +56,15 @@ export class PlansComponent implements OnInit{
     var dP = Array("one", "two");
     console.log("52 userid %o", this. userid)
     var url = 'https://ion.mgh.harvard.edu/cgi-bin/imrtqa/getForQA.php?userid='+this. userid;
-    return this .http.post(url, JSON.stringify(dP))
-//    return this .http.get(url)
+    return this .http.get(url)
     }
+  postData(){
+      var dP = Array("one", "two");
+      console.log("52 userid %o", this. userid)
+      var url = 'https://ion.mgh.harvard.edu/cgi-bin/imrtqa/REST/REST_POST.php?userid='+this. userid;
+      return this .http.post(url, JSON.stringify(dP))
+
+      }   
 
   setData(res ) {
       this.dataArray = res;
@@ -110,6 +116,7 @@ export class PlansComponent implements OnInit{
    // console.log("F3plans %o", this. f3Plans)
   }
   setQAComplete($ev){
+    this .postData().subscribe();
     console.log("112 %o", $ev)
   }
 
@@ -136,14 +143,9 @@ export class PlansComponent implements OnInit{
           { // flowbit == flowbitAndWorkbigt -> QAComplete
             
             this .filteredPlans[key].push(dArray[key][key2]); // push the plan into the array
-         //   if (dArray[key][key2]['UnitNumber'] == '7055544'){
-          //    console.log("2222 key is " + key + " StartDate is "+   dArray[key][key2]['planIdx'] + "  flowbit is "  + dArray[key][key2]['flowbit'] + "flowAndWorkbit" + dArray[key][key2]['flowbitAndWorkbit'] );
-           //   console.log(this .filteredPlans[key]);
-            //}
           }
         }
       })
     })
-
   }
 }
